@@ -19,8 +19,8 @@ services:
       context: .
     container_name: estagflix
     restart: always
-    networks:
-      - estagflix
+    #networks:
+    #  - estagflix
     ports:
       - "80:80"
 
