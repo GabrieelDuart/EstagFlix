@@ -12,7 +12,7 @@ services:
     networks:
       - estagflix
     ports:
-      - "4545:3306"
+      - "3306:3306"
 
   web:
     build:
@@ -22,7 +22,7 @@ services:
     networks:
       - estagflix
     ports:
-      - "81:80"
+      - "80:80"
 
 volumes:
   mysqldb:
