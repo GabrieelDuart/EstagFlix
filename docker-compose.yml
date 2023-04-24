@@ -9,8 +9,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "$ROOT_PASSWORD"
-    networks:
-      - estagflix
+    #networks:
+    #  - estagflix
     ports:
       - "3306:3306"
 
@@ -27,6 +27,6 @@ services:
 volumes:
   mysqldb:
 
-networks:
-  estagflix:
-    driver: bridge
+#networks:
+#  estagflix:
+#    driver: bridge
