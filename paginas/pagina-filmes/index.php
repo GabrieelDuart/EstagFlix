@@ -1,3 +1,6 @@
+<?php
+include ("../pagina-login/php/verifica-login.php")
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,6 +28,8 @@
                 <a href="#">Séries</a>
                 <a href="#">Filmes</a>
                 <a href="#">Documentários</a>
+                <a href="#"><?php echo $_SESSION['usuario'];?></a>
+                <a href="../pagina-login/php/logout.php">Sair</a>
             </nav>
         </div> 
     </header><br>
