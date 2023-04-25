@@ -16,13 +16,12 @@
             <br/>
             <h1>Entrar</h1><br/>
             <br/>
-            <form id="Login">
-                <input id="user" type="text" placeholder="Usuario" required><br/>
-                <input id="password" type="password" placeholder="Senha" required><br/><br/><br/><br/>
-                <input id="Btn_Entrar" type="submit" value="Entrar"><br/>
+            <form  action="php/login.php" method="POST">
+                <input id="usuario" type="text" name="usuario" placeholder="Usuario" ><br/>
+                <input id="senha" type="password" name="senha" placeholder="Senha" ><br/><br/><br/><br/>
+                <input type="submit" value="OK"><br/>
             </form>
         </div>
-        
         <div class="formulario">
             <h1>Crie sua conta</h1>
             <form action="#">
@@ -36,10 +35,12 @@
                 
                 <input type="submit" value="Registrar"><br/>
             </form>
-        </div>
+        </div>  
+        
     </div>
     <script src="js/jquery-3.1.1.min.js"></script>    
     <script src="js/main.js"></script>
-    <script src="js/Validacao_Login.js"></script>
+
 </body>
 </html>
+
