@@ -9,24 +9,33 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "$ROOT_PASSWORD"
+<<<<<<< HEAD
     #networks:
     #  - estagflix
+=======
+>>>>>>> chagas
     ports:
       - "3306:3306"
-
   web:
     build:
       context: .
     container_name: estagflix
     restart: always
+<<<<<<< HEAD
     #networks:
     #  - estagflix
+=======
+>>>>>>> chagas
     ports:
       - "80:80"
 
 volumes:
+<<<<<<< HEAD
   mysqldb:
 
 #networks:
 #  estagflix:
 #    driver: bridge
+=======
+  mysqldb:
+>>>>>>> chagas
