@@ -1,6 +1,5 @@
 <?php
 session_start();
-include("verifica-login.php");
 include("conexao-banco.php");
 
 if(empty($_POST['usuario']) || empty($_POST['senha'])){
