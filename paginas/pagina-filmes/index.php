@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ("../pagina-login/php/verifica-login.php")
 ?>
 

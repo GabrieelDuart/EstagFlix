@@ -20,7 +20,7 @@ $result = mysqli_query($conexao, $query);
 $row = mysqli_num_rows($result);
 
 if($row == 1) {
-    $_SESSION["usuario"] = $usuario;
+    $_SESSION['usuario'] = $usuario;
     header("location: ../../pagina-filmes/index.php ");
     exit();
 }else{
