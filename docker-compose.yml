@@ -17,7 +17,7 @@ services:
     container_name: estagflix
     restart: always
     ports:
-      - "88:80"
+      - "80:80"
 
 volumes:
   mysqldb:
