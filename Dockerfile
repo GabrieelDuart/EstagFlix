@@ -1,10 +1,17 @@
-FROM httpd:latest
+FROM ubuntu:22.04
 
-WORKDIR /usr/local/apache2/htdocs/
+ENV DEBIAN_FRONTEND=noninteractive
 
-COPY . ./estagflix
-COPY httpd.conf /usr/local/apache2/conf
+RUN apt update 
+RUN apt install apache2 -y
+RUN apt install php8.1 -y
+RUN apt clean
 
-RUN sudo apt install php8.1
+COPY . /var/www/html/estagflix
+RUN rm /var/www/html/index.html
+COPY 000-default.conf etc/apache2/sites-available
 
 EXPOSE 80
+
+CMD ["apache2ctl", "-D","FOREGROUND"]
+
