@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,7 +23,18 @@
                 <input id="usuario" type="text" name="usuario" placeholder="Usuario" ><br/>
                 <input id="senha" type="password" name="senha" placeholder="Senha" ><br/><br/><br/><br/>
                 <input type="submit" value="OK"><br/>
-            </form>
+            </form> 
+                <?php
+                if(isset($_SESSION['nao_autenticado'])):
+                ?>
+                <h1>ERRO</h1>
+                <br/>
+                <h2>usuário ou senha incorretos</h2>
+                <br>
+                <?php  
+                unset($_SESSION['nao_autenticado']);
+                endif;
+                ?>
         </div>
         <div class="formulario">
             <h1>Crie sua conta</h1>

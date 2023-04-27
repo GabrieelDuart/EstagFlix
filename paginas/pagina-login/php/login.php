@@ -1,10 +1,9 @@
 <?php
 session_start();
-include("verifica-login.php");
 include("conexao-banco.php");
 
 if(empty($_POST['usuario']) || empty($_POST['senha'])){
-    header("location: ../index.html");
+    header("location: ../index.php");
     exit();
 }
 
@@ -24,6 +23,7 @@ if($row == 1) {
     header("location: ../../pagina-filmes/index.php ");
     exit();
 }else{
-    header("location: ../index.html");
+    $_SESSION['nao_autenticado'] = true;
+    header("location: ../index.php");
     exit();
 }
