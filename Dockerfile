@@ -4,11 +4,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update 
 RUN apt install apache2 -y
-RUN apt install php8.1 -y
+RUN apt install php8.1 php8.1-mysql -y
+RUN apt install php-mysql -y
 RUN apt clean
 
 COPY . /var/www/html/estagflix
 RUN rm /var/www/html/index.html
+
 COPY 000-default.conf etc/apache2/sites-available
 
 EXPOSE 80
