@@ -1,9 +1,14 @@
 <?php
 
-define('DB_HOST', $DBHOST);
-define('DB_USER', $DB_USER);
-define('DB_PASS', $DB_PASS);
-define('DB_NAME', $DB_NAME);
+//define('DB_HOST', $DBHOST);
+//define('DB_USER', $DB_USER);
+//define('DB_PASS', $DB_PASS);
+//define('DB_NAME', $DB_NAME);
+
+define('DB_HOST', '10.5.0.6');
+define('DB_USER', 'root');
+define('DB_PASS', 'vista');
+define('DB_NAME', 'login');
 
 $conexao = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
