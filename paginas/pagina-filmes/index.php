@@ -25,10 +25,6 @@ include ("../pagina-login/php/verifica-login.php")
         <div class="container">
             <h2 class="logo">EstagFlix</h2>
             <nav>
-                <a href="#">Inicio</a>
-                <a href="#">Séries</a>
-                <a href="#">Filmes</a>
-                <a href="#">Documentários</a>
                 <a href="#"><?php echo $_SESSION['usuario'];?></a>
                 <a href="../pagina-login/php/logout.php">Sair</a>
             </nav>
