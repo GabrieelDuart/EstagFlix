@@ -15,7 +15,7 @@ $c_senha_cadastro = $_POST['c_senha_cadastro'];
 $email = $_POST['email'];
 
 
-// verifica se já existe um usuario no banco com o mesmo nome que será criado select email from usuario where email = 'potoco@gmail.com';
+// verifica se já existe um email 
 
 $query = ("select email from usuario where email = '$email';");
 
@@ -28,8 +28,11 @@ if($row == 1) {
     $_SESSION['email_existente'] = true;
     header("location: ../index.php");
     exit();
-    
+
 }else{
+    
+    // verifica se já existe um usuario no banco
+    
     $query = ("select usuario from usuario where usuario = '$user';");
 
     $result = mysqli_query($conexao, $query);
