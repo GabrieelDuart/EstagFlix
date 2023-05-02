@@ -35,7 +35,9 @@ session_start();
                 unset($_SESSION['nao_autenticado']);
                 endif;
                 ?>
-                <?php
+               
+               
+               <?php
                 if(isset($_SESSION['cadastrado'])):
                 ?>
                 <h1>Sucesso !!!</h1>
@@ -46,6 +48,8 @@ session_start();
                 unset($_SESSION['cadastrado']);
                 endif;
                 ?>
+                
+                
                 <?php
                 if(isset($_SESSION['nao_cadastrado'])):
                 ?>
@@ -57,7 +61,9 @@ session_start();
                 unset($_SESSION['nao_cadastrado']);
                 endif;
                 ?>
-                 <?php
+                
+                
+                <?php
                 if(isset($_SESSION['usuario_existente'])):
                 ?>
                 <h1>ERRO</h1>
@@ -68,7 +74,9 @@ session_start();
                 unset($_SESSION['usuario_existente']);
                 endif;
                 ?>
-                   <?php
+                
+                
+                <?php
                 if(isset($_SESSION['email_existente'])):
                 ?>
                 <h1>ERRO</h1>
