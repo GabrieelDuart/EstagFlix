@@ -5,7 +5,7 @@
 //define('DB_PASS', $DB_PASS);
 //define('DB_NAME', $DB_NAME);
 
-define('DB_HOST', '10.5.0.6');
+define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', 'vista');
 define('DB_NAME', 'login');
