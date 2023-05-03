@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+//require __DIR__.'/vendor/autoload.php';
+
+//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+//$dotenv->safeLoad();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

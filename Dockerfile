@@ -1,19 +1,15 @@
-FROM ubuntu:22.04
+FROM php:8.1.0-apache
 
-ENV DEBIAN_FRONTEND=noninteractive
+COPY app /var/www/html
+WORKDIR /var/www/html
 
-RUN apt update 
-RUN apt install apache2 -y
-RUN apt install php8.1 php8.1-mysql -y
-RUN apt install php-mysql -y
-RUN apt clean
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-COPY . /var/www/html/estagflix
-RUN rm /var/www/html/index.html
-
-COPY 000-default.conf etc/apache2/sites-available
+RUN apt update && \
+    docker-php-ext-install mysqli && \
+    apt install unzip -y && \
+    composer require vlucas/phpdotenv
 
 EXPOSE 80
 
-CMD ["apache2ctl", "-D","FOREGROUND"]
 

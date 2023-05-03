@@ -1,16 +1,23 @@
 <?php
 
-//define('DB_HOST', $DBHOST);
-//define('DB_USER', $DB_USER);
-//define('DB_PASS', $DB_PASS);
-//define('DB_NAME', $DB_NAME);
+require '/var/www/html/vendor/autoload.php';
 
-define('DB_HOST', '10.5.0.6');
-define('DB_USER', 'root');
-define('DB_PASS', 'vista');
-define('DB_NAME', 'login');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
+$host = $_ENV['DB_HOST'];
+$user = $_ENV['DB_USER'];
+$pass = $_ENV['DB_PASS'];
+$db_name = $_ENV['DB_NAME'];
+
+
+define('DB_HOST', $host); 
+define('DB_USER', $user);
+define('DB_PASS', $pass);
+define('DB_NAME', $db_name);
 
 $conexao = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
 
 if (mysqli_connect_errno()) {
   die('Falha na conexão com o banco de dados: ' . mysqli_connect_error());

@@ -8,16 +8,24 @@ services:
       - mysqldb:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "$ROOT_PASSWORD"
+      MYSQL_ROOT_PASSWORD: "${DB_PASS}"
+    networks:
+      - estagflix-lan
     ports:
-      - "3306:3306"
+      - "3000:3306"
   web:
     build:
       context: .
     container_name: estagflix
     restart: always
+    networks:
+      - estagflix-lan
     ports:
-      - "80:80"
+      - "8000:80"
+
+networks:
+  estagflix-lan:
+    driver: bridge
 
 volumes:
   mysqldb:
