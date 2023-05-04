@@ -2,7 +2,6 @@
 
 require '/var/www/html/vendor/autoload.php';
 
-<<<<<<< HEAD:app/paginas/pagina-login/php/conexao-banco.php
 $host = $_ENV['DB_HOST'];
 $user = $_ENV['DB_USER'];
 $pass = $_ENV['DB_PASS'];
@@ -12,12 +11,6 @@ define('DB_HOST', $host);
 define('DB_USER', $user);
 define('DB_PASS', $pass);
 define('DB_NAME', $db_name);
-=======
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', 'vista');
-define('DB_NAME', 'login');
->>>>>>> duarte:paginas/pagina-login/php/conexao-banco.php
 
 $conexao = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
