@@ -1,6 +1,8 @@
 <?php
 
 require '/var/www/html/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
 
 $host = $_ENV['DB_HOST'];
 $user = $_ENV['DB_USER'];
