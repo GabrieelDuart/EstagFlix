@@ -1,15 +1,20 @@
-FROM php:8.1.0-apache
+FROM ubuntu:22.04
 
-COPY app /var/www/html
-WORKDIR /var/www/html
-
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
-    docker-php-ext-install mysqli && \
-    apt install unzip -y && \
-    composer require vlucas/phpdotenv
+    apt install apache2 -y && \
+    apt install php8.1 php8.1-mysqli -y && \
+    rm /var/www/html/index.html && \
+    apt clean
 
-EXPOSE 80
+WORKDIR /var/www/html
+COPY app .
 
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN apt install unzip -y
+RUN composer require vlucas/phpdotenv
 
+EXPOSE 8000
+
+CMD ["apache2ctl", "-D","FOREGROUND"]
