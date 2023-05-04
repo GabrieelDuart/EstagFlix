@@ -41,20 +41,74 @@ session_start();
                 unset($_SESSION['nao_autenticado']);
                 endif;
                 ?>
+               
+               
+               <?php
+                if(isset($_SESSION['cadastrado'])):
+                ?>
+                <h1>Sucesso !!!</h1>
+                <br/>
+                <h2>usuário cadastrado</h2>
+                <br>
+                <?php  
+                unset($_SESSION['cadastrado']);
+                endif;
+                ?>
+                
+                
+                <?php
+                if(isset($_SESSION['nao_cadastrado'])):
+                ?>
+                <h1>ERRO</h1>
+                <br/>
+                <h2>Senhas não coincidem</h2>
+                <br>
+                <?php  
+                unset($_SESSION['nao_cadastrado']);
+                endif;
+                ?>
+                
+                
+                <?php
+                if(isset($_SESSION['usuario_existente'])):
+                ?>
+                <h1>ERRO</h1>
+                <br/>
+                <h2>Usuario já existe</h2>
+                <br>
+                <?php  
+                unset($_SESSION['usuario_existente']);
+                endif;
+                ?>
+                
+                
+                <?php
+                if(isset($_SESSION['email_existente'])):
+                ?>
+                <h1>ERRO</h1>
+                <br/>
+                <h2>Email já existe</h2>
+                <br>
+                <?php  
+                unset($_SESSION['email_existente']);
+                endif;
+                ?>
         </div>
         <div class="formulario">
             <h1>Crie sua conta</h1>
-            <form action="#">
-                <input type="text" placeholder="Usuario" required><br/>
+            <form action="php/cria-login.php" method="POST">
+
+                <input id="user" type="text" name="user" placeholder="Usuario" required><br/>
                 
-                <input type="password" placeholder="Senha" required><br/>
+                <input id="senha_cadastro" type="password" name="senha_cadastro" placeholder="Senha" required><br/>
+
+                <input id="c_senha_cadastro" type="password" name="c_senha_cadastro" placeholder="Confirme sua senha" required><br/>
                 
-                <input type="email" placeholder="Email" required><br/>
-                
-                <input type="text" placeholder="Telefone" required><br/>
+                <input id="email" type="email" placeholder="Email" name="email" equired><br/>
                 
                 <input type="submit" value="Registrar"><br/>
             </form>
+            
         </div>  
         
     </div>
