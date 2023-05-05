@@ -10,8 +10,6 @@ HOST="192.168.1.174"
 
 # FUNCTIONS
 
-
-
 checks_docker () {
   if ! command -v docker &> /dev/null; then
     curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
@@ -21,6 +19,14 @@ checks_docker () {
   fi
 
 }
+
+checks_docker_compose () {
+  if ! command -v docker-compose &> /dev/null; then
+    sudo apt update && apt install docker-compose -y 
+  else
+    echo "Docker Compose OK ✅"
+  fi
+
 
 checks_git (){
   if ! command -v git &> /dev/null; then
@@ -51,5 +57,6 @@ checks_project(){
 }
 
 checks_docker
+checks_docker_compose
 checks_git
 checks_project
