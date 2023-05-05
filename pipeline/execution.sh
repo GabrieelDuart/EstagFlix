@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
+#VARS
+
+PROJETO="EstagFlix"
+PROJECT_PATH="~/${PROJETO}"
+USER="vagrant"
+HOST="192.168.1.174"
+
+
 # FUNCTIONS
+
+
 
 checks_docker () {
   if ! command -v docker &> /dev/null; then
