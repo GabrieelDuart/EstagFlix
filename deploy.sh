@@ -24,6 +24,17 @@ case $1 in
 esac
 
 
+docker () {
+  if ! command -v docker &> /dev/null; then
+    curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+    sudo apt update && apt install docker-compose -y 
+  else
+    echo "Docker OK ✅"
+  fi
+
+}
+
+
 
 ssh -t $USER@$HOST << EOF
 
@@ -31,12 +42,17 @@ echo -e "\n\033[1;31mEtapa 1)\nVerificando requisitos para Deploy do $PROJETO \0
 
 # --------  Checks Docker
 
-if ! command -v docker &> /dev/null; then
-  curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
-  sudo apt update && apt install docker-compose -y 
-else
-  echo "Docker OK ✅"
-fi
+docker () {
+  if ! command -v docker &> /dev/null; then
+    curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+    sudo apt update && apt install docker-compose -y 
+  else
+    echo "Docker OK ✅"
+  fi
+
+}
+
+docker
 
 # -------- Checks Git
 
@@ -61,6 +77,7 @@ if [ ! -d ${PROJECT_PATH} ]; then
   fi
 else
   cd $PROJECT_PATH
+  git checkout chagas
   git pull &> /dev/null
   echo "Projeto OK ✅"
 fi
@@ -68,8 +85,8 @@ fi
 #echo -e "\n\033[1;31mEtapa 2)\nBuild do projeto \033[0m\n"
 
 cd $PROJECT_PATH
-sudo docker-compose down --remove-orphans && sudo docker-compose build
-ENV=dev WEB_PORT=5000 MYSQL_PORT=4000 sudo docker-compose up -d
+docker-compose down --remove-orphans && docker-compose build
+ENV=-dev WEB_PORT=5000 MYSQL_PORT=4000 docker-compose up -d
 
 
 EOF
