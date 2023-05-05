@@ -3,7 +3,7 @@ version: '3'
 services:
   db:
     image: mysql:8
-    container_name: mysql-estagflix
+    container_name: mysql-estagflix${ENV:--prod}
     volumes:
       - mysqldb:/var/lib/mysql
       - ./mysql:/docker-entrypoint-initdb.d/
@@ -13,16 +13,22 @@ services:
     networks:
       - estagflix-lan
     ports:
-      - "3000:3306"
+      - "${MYSQL_PORT:-3000}:80"
+
   web:
     build:
       context: .
-    container_name: estagflix
+    container_name: estagflix${ENV:--prod}
     restart: always
     networks:
       - estagflix-lan
+    environment: 
+      HOST_MYSQL: "mysql-estagflix${ENV:--prod}"
+      DB_USER: $DB_USER
+      DB_PASS: $DB_PASS
+      DB_NAME: $DB_NAME
     ports:
-      - "80:80"
+      - "${WEB_PORT:-80}:80"
 
 networks:
   estagflix-lan:

@@ -11,10 +11,6 @@ RUN apt update && \
 WORKDIR /var/www/html
 COPY app .
 
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-RUN apt install unzip -y
-RUN composer require vlucas/phpdotenv
-
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["apache2ctl", "-D","FOREGROUND"]
