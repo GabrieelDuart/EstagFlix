@@ -28,7 +28,6 @@ esac
 ssh -t $USER@$HOST << EOF
 
 cd $PROJECT_PATH
-echo $1
-bash pipeline/execution.sh 
+bash pipeline/execution.sh $1
 
 EOF
