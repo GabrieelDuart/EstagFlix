@@ -24,25 +24,13 @@ case $1 in
 esac
 
 
-docker () {
-  if ! command -v docker &> /dev/null; then
-    curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
-    sudo apt update && apt install docker-compose -y 
-  else
-    echo "Docker OK ✅"
-  fi
-
-}
-
-
-
 ssh -t $USER@$HOST << EOF
 
 echo -e "\n\033[1;31mEtapa 1)\nVerificando requisitos para Deploy do $PROJETO \033[0m\n"
 
-# --------  Checks Docker
+# ---------  Funções
 
-docker () {
+checks_docker () {
   if ! command -v docker &> /dev/null; then
     curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
     sudo apt update && apt install docker-compose -y 
@@ -52,7 +40,14 @@ docker () {
 
 }
 
-docker
+checks_git (){
+  if ! command -v git &> /dev/null; then
+    sudo apt update && sudo apt install git && echo "git OK"
+  else
+    echo "Git OK ✅"
+  fi
+  
+}
 
 # -------- Checks Git
 
