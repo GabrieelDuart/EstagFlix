@@ -26,6 +26,7 @@ checks_docker_compose () {
   else
     echo "Docker Compose OK ✅"
   fi
+}
 
 
 checks_git (){
