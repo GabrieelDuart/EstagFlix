@@ -13,7 +13,7 @@ services:
     networks:
       - estagflix-lan
     ports:
-      - "${MYSQL_PORT:-3000}:80"
+      - "${MYSQL_PORT:-3000}:3306"
 
   web:
     build:
