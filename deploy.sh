@@ -19,7 +19,7 @@ ssh -t $USER@$HOST << EOF
 
 err () {
   echo -e "\n\033[1;31mEtapa 1/3)\nERRO! \033[0m\n"
-  echo \$1
+  echo "Comando ou função com erro: \$1"
   exit 1
 }
 
@@ -57,9 +57,6 @@ check_or_clone_project() {
       fi
     fi
   else
-    cd $PROJECT_PATH
-    git checkout main &> /dev/null
-    git pull &> /dev/null
     echo "Projeto OK ✅"
   fi
 }
@@ -74,8 +71,11 @@ checks_docker
 
 echo -e "\n\033[1;31mEtapa 2/3 - Build do projeto \033[0m\n"
 
-cd $PROJECT_PATH
-docker-compose build &> /dev/null && echo "Build ✅"
+cd $PROJECT_PATH || err "cd project path"
+docker-compose build &> /dev/null || err "compose build"
+git checkout main &> /dev/null || err "checkout main"
+git pull &> /dev/null || err "git pull"
+echo "Build ✅"
 
 echo -e "\n\033[1;31mEtapa 3/3 - Deploy \033[0m\n"
 
