@@ -2,11 +2,13 @@
 
 # author: Gabriel Chagas
 # tested: Ubuntu 22.04 LTS
+# Versão: 1.0
 
 PROJETO="EstagFlix"
 PROJECT_PATH="~/${PROJETO}"
 USER="vagrant"
 HOST="192.168.1.174"
+DNS_HOST=prod-estagflix/
 
 
 # =================================== CONEXÃO SSH =================================== #
@@ -15,10 +17,18 @@ ssh -t $USER@$HOST << EOF
 
 # =================================== FUNÇÕES ====================================== #
 
+err () {
+  echo -e "\n\033[1;31mEtapa 1/3)\nERRO! \033[0m\n"
+  echo \$1
+  exit 1
+}
+
 checks_docker () {
   if ! command -v docker &> /dev/null; then
-    curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
-    sudo apt update && apt install docker-compose -y 
+    curl -fsSL https://get.docker.com -o get-docker.sh &> /dev/null || err "checks_docker"
+    sudo sh get-docker.sh &> /dev/null || err "checks_docker"
+    sudo apt update &> /dev/null || err "checks_docker"
+    apt install docker-compose -y &> /dev/null || err "checks_docker"
   else
     echo "Docker OK ✅"
   fi
@@ -48,7 +58,7 @@ check_or_clone_project() {
     fi
   else
     cd $PROJECT_PATH
-    git checkout chagas &> /dev/null
+    git checkout main &> /dev/null
     git pull &> /dev/null
     echo "Projeto OK ✅"
   fi
@@ -56,19 +66,23 @@ check_or_clone_project() {
 
 # =================================== EXECUÇÃO ====================================== #
 
-echo -e "\n\033[1;31mEtapa 1)\nVerificando requisitos para Deploy do $PROJETO \033[0m\n"
+echo -e "\n\033[1;31mEtapa 1/3 - Verificando requisitos para Deploy do $PROJETO \033[0m\n"
 
 checks_git
 check_or_clone_project
 checks_docker 
 
-
-
-echo -e "\n\033[1;31mEtapa 2)\nBuild do projeto \033[0m\n"
+echo -e "\n\033[1;31mEtapa 2/3 - Build do projeto \033[0m\n"
 
 cd $PROJECT_PATH
-docker-compose down --remove-orphans && docker-compose build
-ENV=-dev WEB_PORT=5000 MYSQL_PORT=4000 docker-compose up -d
+docker-compose build &> /dev/null && echo "Build ✅"
 
+echo -e "\n\033[1;31mEtapa 3/3 - Deploy \033[0m\n"
+
+docker-compose down --remove-orphans &> /dev/null || err "compose down"
+docker-compose up -d &> /dev/null || err "compose up"
+echo "Deploy OK ✅"
+
+echo -e "\n\033[1;32mLink para acesso: 'http://prod-estagflix/'\033[0m\n"
 
 EOF
