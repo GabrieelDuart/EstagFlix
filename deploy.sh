@@ -80,9 +80,9 @@ checks_docker-compose
 echo -e "\n\033[1;31mEtapa 2/3 - Build do projeto \033[0m\n"
 
 cd $PROJECT_PATH || err "cd project path"
-sudo docker-compose build || err "compose build"
 git checkout chagas &> /dev/null || err "checkout main"
-git pull &> /dev/null || err "git pull"
+git pull || err "git pull"
+sudo docker-compose build || err "compose build"
 echo "Build ✅"
 
 echo -e "\n\033[1;31mEtapa 3/3 - Deploy \033[0m\n"
