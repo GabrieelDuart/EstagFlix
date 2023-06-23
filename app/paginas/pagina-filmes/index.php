@@ -23,7 +23,7 @@ include ("../pagina-login/php/verifica-login.php")
 </body>
     <header><br>
         <div class="container">
-            <h2 class="logo">EstagFlix</h2>
+            <img src="../../estagflix.png" alt="" />
             <nav>
                 <a href="../pagina-filmes/index.php"><?php echo $_SESSION['usuario'];?></a>
                 <a href="../pagina-adm/index.php"><?php echo $_SESSION['usuario_adm'];?></a> 
