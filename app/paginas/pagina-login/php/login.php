@@ -20,6 +20,15 @@ $row = mysqli_num_rows($result);
 
 if($row == 1) {
     $_SESSION['usuario'] = $usuario;
+
+    $query = ("SELECT perm_adm FROM usuario WHERE usuario = '$usuario';");
+    $result = mysqli_query($conexao, $query);
+    $row = mysqli_fetch_assoc($result); 
+
+    if ($row['perm_adm'] == 1) { 
+        $_SESSION['usuario_adm'] = true;
+        $_SESSION['usuario_adm'] = "Gerenciamento";
+    }
     header("location: ../../pagina-filmes/index.php ");
     exit();
 }else{

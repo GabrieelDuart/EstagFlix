@@ -49,7 +49,7 @@ if($row == 1) {
     
         if($senha_cadastro == $c_senha_cadastro){
             $_SESSION['cadastrado'] = true;
-            $query = ("insert into usuario(usuario,senha,email) values	('$user',md5('$senha_cadastro'),'$email');");
+            $query = ("insert into usuario(usuario,senha,email,perm_adm) values	('$user',md5('$senha_cadastro'),'$email',false);");
             mysqli_query($conexao, $query);
             header("location: ../index.php");
             exit();

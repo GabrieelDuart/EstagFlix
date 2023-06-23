@@ -25,7 +25,8 @@ include ("../pagina-login/php/verifica-login.php")
         <div class="container">
             <h2 class="logo">EstagFlix</h2>
             <nav>
-                <a href="#"><?php echo $_SESSION['usuario'];?></a>
+                <a href="../pagina-filmes/index.php"><?php echo $_SESSION['usuario'];?></a>
+                <a href="../pagina-adm/index.php"><?php echo $_SESSION['usuario_adm'];?></a> 
                 <a href="../pagina-login/php/logout.php">Sair</a>
             </nav>
         </div> 
