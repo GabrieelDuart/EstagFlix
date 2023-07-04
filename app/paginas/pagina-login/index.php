@@ -10,7 +10,13 @@ session_start();
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
+
+    <a href="../../index.html">
+        <img src="../../estagflix.png" alt="EstagFlix">
+    </a>
+
     <div class="contenedor-form">
+        
         <div class="toggle">
             <span> Criar conta</span>
         </div>

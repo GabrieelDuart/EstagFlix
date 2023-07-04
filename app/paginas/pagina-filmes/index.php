@@ -10,6 +10,7 @@ include ("../pagina-login/php/verifica-login.php")
     <link rel="stylesheet" href="style/main.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
+
     <!--responsividade-->
     <link rel="stylesheet" href="style/responsive.css">
 
@@ -20,10 +21,13 @@ include ("../pagina-login/php/verifica-login.php")
     <title>Início – EstagFlix</title>
 </head>
 <body>
+
 </body>
     <header><br>
         <div class="container">
-            <img src="../../estagflix.png" alt="" />
+            <a href="../../index.html">
+                <img src="../../estagflix.png" alt="EstagFlix">
+            </a>
             <nav>
                 <a href="../pagina-filmes/index.php"><?php echo $_SESSION['usuario'];?></a>
                 <a href="../pagina-adm/index.php"><?php echo $_SESSION['usuario_adm'];?></a> 
@@ -123,8 +127,11 @@ include ("../pagina-login/php/verifica-login.php")
                 <div class="item">
                     <img class="box-filme" src="img/img-11.jpg" alt="" srcset="">
                 </div>
+
+   
         </div>
     </div>
+
     
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
     <script src="js/jquery.min.js"></script>
